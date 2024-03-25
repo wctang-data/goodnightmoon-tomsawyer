@@ -1,0 +1,23 @@
+---
+---
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{ site.title }}</title>
+  </head>
+  <body>
+    <h1>{{ site.title }}</h1>
+    <img src="{{ '/logo.jpg' | prepend: site.baseurl | prepend: site.url }}" />
+    <p>{{ site.description }}</p>
+    <a href="{{ '/feed.xml' | prepend: site.baseurl | prepend: site.url }}">feed</a>
+    <ul>
+{% for item in site.items %}
+{% assign fn = item.title | slice: 0, 2 | prepend: "/" | append: ".mp3" %}
+    <li>
+      <a href="{{ fn | prepend: site.baseurl | prepend: site.url }}">{{ item.title }}</a>
+    </li>
+{% endfor %}
+    </ul>
+  </body>
+  <p>{{ podcast.time }}</p>
+</html>
